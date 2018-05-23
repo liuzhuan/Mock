@@ -9,18 +9,18 @@ var istanbul = require('gulp-istanbul')
 var mocha = require('gulp-mocha')
 var coveralls = require('gulp-coveralls')
 
-// 
+//
 gulp.task('hello', function() {
     console.log((function() {
         /*
-___  ___              _        _      
-|  \/  |             | |      (_)     
-| .  . |  ___    ___ | | __    _  ___ 
+___  ___              _        _
+|  \/  |             | |      (_)
+| .  . |  ___    ___ | | __    _  ___
 | |\/| | / _ \  / __|| |/ /   | |/ __|
 | |  | || (_) || (__ |   <  _ | |\__ \
 \_|  |_/ \___/  \___||_|\_\(_)| ||___/
-                             _/ |     
-                            |__/    
+                             _/ |
+                            |__/
         */
     }).toString().split('\n').slice(2, -2).join('\n') + '\n')
 })
@@ -56,6 +56,7 @@ gulp.task('jshint', function() {
 // https://webpack.github.io/docs/usage-with-gulp.html
 gulp.task("webpack", function( /*callback*/ ) {
     webpack({
+        // 入口文件
         entry: './src/mock.js',
         output: {
             path: './dist',
@@ -152,7 +153,7 @@ gulp.task('coveralls', ['istanbul'], function() {
         .pipe(coveralls())
 })
 
-// 
+//
 gulp.task('publish', function() {
     var child_process = require('child_process')
     child_process.exec('ls', function(error, stdout, stderr) {

@@ -60,6 +60,7 @@ Util.type = function type(obj) {
     return (obj === null || obj === undefined) ? String(obj) : Object.prototype.toString.call(obj).match(/\[object (\w+)\]/)[1].toLowerCase()
 }
 
+// 增加 Util.isString, isObject, isArray, isRegExp, isFunction 等判断函数
 Util.each('String Object Array RegExp Function'.split(' '), function(value) {
     Util['is' + value] = function(obj) {
         return Util.type(obj) === value.toLowerCase()
@@ -81,6 +82,7 @@ Util.keys = function(obj) {
     }
     return keys;
 }
+
 Util.values = function(obj) {
     var values = [];
     for (var key in obj) {
@@ -101,13 +103,13 @@ Util.values = function(obj) {
         var tpl = Mock.heredoc(function() {
             /*!
         {{email}}{{age}}
-        <!-- Mock { 
+        <!-- Mock {
             email: '@EMAIL',
             age: '@INT(1,100)'
         } -->
             *\/
         })
-    
+
     **相关阅读**
     * [Creating multiline strings in JavaScript](http://stackoverflow.com/questions/805107/creating-multiline-strings-in-javascript)、
 */
